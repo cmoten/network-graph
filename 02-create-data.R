@@ -68,14 +68,16 @@ data_table <- data_table %>%
 node_table <- data.frame(
   id = paste0("n", stringr::str_pad(1:nrow(data_table), width = 3, side = "left", pad = "0")),
   evn_state = data_table$nodes,
-  weight = data_table$score
+  weight = data_table$score,
+  stringsAsFactors = FALSE
 )
 
 write.csv(node_table, file = "data/env-state-nodes.csv", row.names = FALSE)
 
 #edges-----
 edge_table <- data.frame( from = "n000",
-                          to = "n000")
+                          to = "n000",
+                          stringsAsFactors = FALSE)
 
 loop_limit <- nrow(node_table) - 1
 

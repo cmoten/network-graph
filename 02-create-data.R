@@ -1,16 +1,26 @@
 
 #data-----
-factor_one <- paste0("O",1:5)
-factor_two <- paste0("L",1:5)
-factor_three <- paste0("C",1:4)
-factor_four <- paste0("F",1:4)
-factor_five <- paste0("R",1:4)
+factor_one <- 1:5
+factor_two <- 1:5
+factor_three <- 1:4
+factor_four <- 1:4
+factor_five <- 1:4
 
 data_table <- expand.grid(f1 = factor_one,
                           f2 = factor_two,
                           f3 = factor_three,
                           f4 = factor_four,
-                          f5 = factor_five)
+                          f5 = factor_five,
+                          stringsAsFactors = FALSE)
+
+data_table$score <- 30 - rowSums(data_table)
+
+data_table$f1 <- paste0("O", data_table$f1)
+data_table$f2 <- paste0("L", data_table$f2)
+data_table$f3 <- paste0("C", data_table$f3)
+data_table$f4 <- paste0("F", data_table$f4)
+data_table$f5 <- paste0("R", data_table$f5)
+  
 
 remove_rows <- which(data_table[,1] == 4 & data_table[,2] == 1 |
                           data_table[,1] == 5 & data_table[,2] == 1 |
@@ -51,13 +61,12 @@ remove_rows <- which(data_table[,1] == 4 & data_table[,2] == 1 |
 
 data_table <- data_table[-remove_rows, ]
 
-data_table$score <- 30 - rowSums(data_table)
 
-data_table$f1 <- paste0("O", data_table$f1)
-data_table$f2 <- paste0("L", data_table$f2)
-data_table$f3 <- paste0("C", data_table$f3)
-data_table$f4 <- paste0("F", data_table$f4)
-data_table$f5 <- paste0("R", data_table$f5)
+
+
+
+
+
 
 data_table <- data_table[order(data_table$score, decreasing = TRUE), ]
 

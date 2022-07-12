@@ -24,3 +24,11 @@ calc_path_weight <- function(node_id1, node_id2){
   res
 }
 
+get_comparisons <- function(vec){
+  comb_matrix <- combinat::combn2(vec)
+  first_letter <- stringr::str_split(comb_matrix[, 1], "", simplify = TRUE)[, 1]
+  test_vec <- stringr::str_detect(string = comb_matrix[, 2], pattern = first_letter)
+  as.data.frame(comb_matrix[!test_vec, ])
+}
+
+

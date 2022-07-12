@@ -1,10 +1,10 @@
 
 #data-----
-factor_one <- 1:5
-factor_two <- 1:5
-factor_three <- 1:4
-factor_four <- 1:4
-factor_five <- 1:4
+factor_one <- paste0("O",1:5)
+factor_two <- paste0("L",1:5)
+factor_three <- paste0("C",1:4)
+factor_four <- paste0("F",1:4)
+factor_five <- paste0("R",1:4)
 
 data_table <- expand.grid(f1 = factor_one,
                           f2 = factor_two,

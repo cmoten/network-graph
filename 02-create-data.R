@@ -12,14 +12,6 @@ data_table <- expand.grid(f1 = factor_one,
                           f4 = factor_four,
                           f5 = factor_five,
                           stringsAsFactors = FALSE)
-
-data_table$score <- 30 - rowSums(data_table)
-
-data_table$f1 <- paste0("O", data_table$f1)
-data_table$f2 <- paste0("L", data_table$f2)
-data_table$f3 <- paste0("C", data_table$f3)
-data_table$f4 <- paste0("F", data_table$f4)
-data_table$f5 <- paste0("R", data_table$f5)
   
 
 remove_rows <- which(data_table[,1] == 4 & data_table[,2] == 1 |
@@ -60,6 +52,18 @@ remove_rows <- which(data_table[,1] == 4 & data_table[,2] == 1 |
                        data_table[,4] == 1 & data_table[,5] == 4) 
 
 data_table <- data_table[-remove_rows, ]
+
+factor_types <- c("O", "L", "C", "F", "R")
+
+
+
+data_table$score <- 30 - rowSums(data_table)
+
+data_table$f1 <- paste0("O", data_table$f1)
+data_table$f2 <- paste0("L", data_table$f2)
+data_table$f3 <- paste0("C", data_table$f3)
+data_table$f4 <- paste0("F", data_table$f4)
+data_table$f5 <- paste0("R", data_table$f5)
 
 
 
